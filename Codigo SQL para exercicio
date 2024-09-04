@@ -1,0 +1,35 @@
+CREATE TABLE IF NOT EXISTS Clientes (
+    ID INT PRIMARY KEY,
+    Nome VARCHAR(50),
+    Cidade VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS Pedidos (
+    ID INT PRIMARY KEY,
+    ClienteID INT,
+    ProdutoID INT,
+    Quantidade INT,
+    FOREIGN KEY (ClienteID) REFERENCES Clientes(ID)
+);
+
+CREATE TABLE IF NOT EXISTS Produtos (
+    ID INT PRIMARY KEY,
+    Nome VARCHAR(50),
+    Preco DECIMAL(10, 2)
+);
+
+INSERT INTO Clientes (ID, Nome, Cidade) VALUES 
+(1, 'Lucas', 'São Paulo'), 
+(2, 'Mariana', 'Rio de Janeiro'), 
+(3, 'Carlos', 'Brasília');
+
+INSERT INTO Produtos (ID, Nome, Preco) VALUES 
+(1, 'Livro', 29.99), 
+(2, 'Caneta', 2.99), 
+(3, 'Notebook', 2500.00);
+
+INSERT INTO Pedidos (ID, ClienteID, ProdutoID, Quantidade) VALUES 
+(1, 1, 1, 2), 
+(2, 2, 2, 10), 
+(3, 3, 3, 1), 
+(4, 1, 3, 1);
